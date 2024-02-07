@@ -92,7 +92,7 @@ namespace Box
                 roll++;
                 //Add roll after since if not then roll will always be detected
                 Console.Write($"Rolling...\r");
-                Thread.Sleep(200);
+                Thread.Sleep(2000);
                 Console.Write($"You Rolled {dice}!\n");
                 //Tell them if its already been rolled
                 Console.WriteLine(doors[dice] == true ? (roll % 2) != 0 ? "Player One lost a life!" : "Player Two lost a life!" : "");
