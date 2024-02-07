@@ -41,12 +41,13 @@ namespace Box
         }
         static void CheckWin(ref bool[] doors)
         {
-            for(int i = 1; i< doors.Length - 1; i++)
+            if (doors.Contains(false))
             {
-                if (doors[i] == true)
-                {
-                    doors[0] = true;
-                }
+                doors[0]=false;
+            }
+            else
+            {
+                doors[0]=true;
             }
         }
 
@@ -56,8 +57,12 @@ namespace Box
             bool[] doors = new bool[13];
 
             int rolls = 20;
-            while (rolls > 0 && doors[0] != true)
+            while (rolls > 0)
             {
+
+                Console.ReadLine();
+                //Say how many goes left
+                Console.WriteLine($"You have {rolls} rolls left.");
                 //Roll Dice and show result
                 int dice = RollDice();
                 Console.WriteLine($"You Rolled {dice}!");
@@ -67,12 +72,21 @@ namespace Box
                 DisplayBox(doors);
                 //Check the win
                 CheckWin(ref doors);
+                //-1 from rolls
+                rolls--;
+                Console.ReadLine();
+                Console.Clear();
+
             }
             if (doors[0] == true)
             {
                 Console.WriteLine("You Won!");
             }
-
+            else
+            {
+                Console.WriteLine("You Lost");
+            }
+            Console.ReadLine();
         }
     }
 }
